@@ -1,0 +1,467 @@
+body {
+    font-size: 15px;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
+.dark-theme {
+    background-color: #323232;
+    color: #E0E0E0;
+}
+.dark-theme .add-border {
+    border-bottom: 1px solid #434445;
+}
+.dark-theme input {
+    background-color: #454545;
+    border: 1px solid #575858;
+    color: #E2E3E2;
+}
+.dark-theme input:hover {
+    background-color: #454545;
+    border: 1px solid #575858;
+}
+.dark-theme input:focus {
+    background-color: #454545;
+    border: 1px solid #527FA7 !important;
+    box-shadow: 0 0 0 2px #3D6B94;
+}
+.dark-theme input:active {
+    background-color: #454545;
+}
+.dark-theme .primary-button {
+    background-color: #027aff;
+    border: 1px solid #027aff;
+    color: #fff;
+}
+.dark-theme .primary-button:active {
+    background-color: #30a8ff;
+    border: 1px solid #30a8ff;
+}
+.dark-theme .secondary-button {
+    background-color: #5D5F61;
+    border: 1px solid #5D5F61;
+    color: #E6E6E5;
+}
+.dark-theme .secondary-button:active {
+    background-color: #027aff;
+    border: 1px solid #027aff;
+}
+.dark-theme .select-css {
+    color: #E5E5E5;
+    border: 1px solid #5A585A;
+    background-color: #454545;
+    background-image: url('https://sugarcode-assets.s3.eu-central-1.amazonaws.com/icanicon/sketch-chevron.svg');
+}
+
+
+.light-theme {
+    background-color: #f2f2f2;
+    color: #000;
+}
+.light-theme .add-border {
+    border-bottom: 1px solid #DADADA;
+}
+.light-theme input {
+    background-color: #fff;
+    border: 1px solid #D3D4D5;
+    color: #252627;
+}
+.light-theme input:hover {
+    background-color: #fff;
+    border: 1px solid #D3D4D5;
+}
+.light-theme input:focus {
+    background-color: #fff;
+    border: 1px solid #7D9EDF !important;
+    box-shadow: 0 0 0 2px #8CAEEE;
+}
+.light-theme .primary-button {
+    background-color: #027aff;
+    border: 1px solid #027aff;
+    color: #fff;
+}
+.light-theme .primary-button:active {
+    background-color: #30a8ff;
+    border: 1px solid #30a8ff;
+}
+.light-theme .secondary-button {
+    background-color: #fefeff;
+    border: 1px solid #dadada;
+    color: #272626;
+}
+.light-theme .secondary-button:active {
+    background-color: #027aff;
+    border: 1px solid #0955b2;
+    color: #fff;
+}
+.light-theme .select-css {
+    background-color: #fff;
+    border: 1px solid #D4D4D4;
+    color: #272727;
+    background-image: url('https://sugarcode-assets.s3.eu-central-1.amazonaws.com/icanicon/sketch-chevron-dark.svg');
+}
+
+section {
+    width: 100%;
+    padding: 11px 14px 11px 14px;
+    position: relative;
+    box-sizing: border-box;
+    flex-direction: column;
+}
+.add-border {
+    border-bottom: 1px solid #434445;
+}
+.no-padding-bottom {
+    padding-bottom: 0 !important;
+}
+span {
+    font-size: 12px;
+    font-weight: 500;
+    margin-bottom: 16px;
+    display: inline-block;
+}
+p {
+    font-size: 12px;
+    font-weight: 400;
+    align-items: center;
+    display: flex;
+    height: 24px;
+}
+p > img {
+    height: 16px;
+    min-width: 16px;
+    margin-right: 12px;
+}
+p > div {
+    background-color: #027aff;
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    margin-right: 8px;
+}
+.input-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+}
+.password-visibility-toggle {
+    position: absolute;
+    right: 2px;
+    top: 0;
+    height: 30px;
+    bottom: 0;
+    cursor: pointer;
+    border: none;
+    background: transparent;
+    outline: none;
+    margin: 0;
+}
+.password-visibility-toggle > img {
+    height: 16px;
+    width: 16px;
+}
+.password-visibility-toggle > img:nth-of-type(2) {
+    display: none;
+}
+.active > img:nth-of-type(1) {
+    display: none !important;
+}
+.active > img:nth-of-type(2) {
+    display: block !important;
+}
+input {
+    flex: 1;
+    height: 30px;
+    line-height: 30px;
+    outline: none;
+    padding-left: 4px;
+    border: 1px solid #dadada;
+    color: #333333;
+    font-size: 12px;
+    cursor: default;
+    font-weight: 400;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin: 0 0 10px 0;
+    max-width: 181px;
+}
+label {
+    font-size: 14px;
+    line-height: 24px;
+}
+a {
+    color: #027aff;
+    line-height: 32px;
+    height: 20px;
+    display: inline-block;
+    align-items: center;
+    font-size: 12px;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    font-weight: bold;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    position: relative;
+    z-index: 10000;
+}
+a:hover {
+    text-decoration: underline !important;
+    background: transparent;
+}
+.primary-button {
+    width: 100%;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    margin-top: 10px;
+    cursor: default;
+    outline: none;
+    border: none;
+}
+.primary-button:hover {
+}
+.secondary-button {
+    width: 100%;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 16px;
+    border-radius: 4px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    cursor: default;
+    outline: none;
+}
+.secondary-button:hover {
+}
+.select-css {
+    display: block;
+    font-size: 12px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 700;
+    height: 32px;
+    line-height: 1.3;
+    padding: .6em 1.4em .5em .8em;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    border-radius: 4px;
+    -moz-appearance: none;
+    outline: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background-repeat: no-repeat, repeat;
+    background-position: right .7em top 50%, 0 0;
+    background-size: .65em auto, 100%;
+}
+.select-css::-ms-expand {
+    display: none;
+    outline: none;
+}
+.select-css:hover {
+    outline: none;
+}
+.select-css:focus {
+    outline: none;
+}
+.select-css option {
+    font-weight: normal;
+}
+.success-message {
+    width: auto;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: default;
+    outline: none;
+    box-shadow: 0 2px 8px 0 rgba(0,0,0,0.3);
+    position: absolute;
+    bottom: 12px;
+    letter-spacing: 0.01em;
+    border: none;
+    color: #fff;
+    background-color: #222222;
+    border-radius: 8px;
+    display: none;
+    padding: 0;
+    transition: all .1s ease-in;
+    opacity: 0;
+}
+.success-message span {
+    width: auto;
+    color: #fff;
+    height: 20px;
+    display: inline-block;
+}
+#loading-bar-wrapper {
+    width: 100%;
+    height: 4px;
+    background: white;
+}
+#loading-bar {
+    width: 0;
+    height: 4px;
+    background: #18A0FB;
+}
+.options-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.checkbox-wrapper {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 16px;
+    cursor: default;
+    min-width: 150px;
+    max-width: 150px;
+    display: flex;
+    align-items: center;
+    height: 12px;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.checkbox-wrapper aside {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    justify-content: center;
+    margin-right: 4px;
+}
+.checkbox-wrapper > aside > img {
+    height: 16px;
+}
+.checkbox-wrapper > p {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+.checkbox-wrapper input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 10px;
+    width: 10px;
+    border-radius: 2px;
+    background-color: #fff;
+    border: 1px solid #000;
+}
+.checkbox-wrapper:hover input ~ .checkmark {
+}
+.checkbox-wrapper input:checked ~ .checkmark {
+    background-color: #027aff;
+    border: 1px solid #027aff;
+}
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+.checkbox-wrapper input:checked ~ .checkmark:after {
+    display: block;
+}
+.checkbox-wrapper .checkmark:after {
+    left: 3px;
+    top: 0;
+    width: 3px;
+    height: 6px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.inline-alert {
+    width: 100%;
+    height: auto;
+    padding: 16px;
+    color: black;
+    background: #FEEEB7;
+    box-sizing: border-box;
+    border-radius: 4px;
+}
+.inline-alert > span {
+    color: #333333;
+    font-size: 12px;
+    font-weight: 400;
+    margin: 0;
+    line-height: 16px;
+}
+.inline-alert > span > a {
+    display: inline;
+    line-height: 16px;
+    color: #027aff;
+}
+.inline-alert > span > a:hover {
+    text-decoration: underline !important;
+}
+.inline-alert > span > var {
+    font-style: normal !important;
+}
+.inline-success {
+    background: #80FFD6;
+}
+.selection > span {
+    margin: 0;
+}
+.selection > p > var {
+    font-style: normal !important;
+}
+.center-message {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.promo-tile {
+    width: 100%;
+    height: auto;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    margin-top: 12px;
+}
+.promo-tile > span {
+    font-size: 12px;
+    font-weight: 400;
+    margin: 0;
+}
+.promo-tile > img {
+    width: 24px;
+    height: 24px;
+    border-radius: 12px;
+    margin-right: 8px;
+}
+.promo-tile > a {
+    margin-left: 16px;
+    display: inline-block;
+    height: auto;
+    margin-top: 1px;
+}
