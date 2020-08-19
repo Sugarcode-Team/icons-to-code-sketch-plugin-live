@@ -1,0 +1,115 @@
+<html>
+<head>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/clientjs@0.1.11/dist/client.min.js"></script>
+  <link href="https://fonts.googleapis.com/css?family=Raleway:700,900|Roboto:400,500,600,700,Roboto+Mono:700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="ea70063a5063d3c0f91289c5e0654428.css";">
+  <title>
+    Icons → Code
+  </title>
+</head>
+<body class="dark-theme">
+
+<!-- Selection section -->
+<section class="selection add-border">
+  <span>Selection</span>
+  <p>
+    <img src="https://sugarcode-assets.s3.eu-central-1.amazonaws.com/icanicon/sketch-select-icon.svg" alt="Selected icon">
+    <var id="selection-amount">0</var>&nbsp;icon(s) selected
+  </p>
+  <div id="unlock-wrapper" class="inline-alert">
+      <span>
+        <var id="free-amount">0</var>&nbsp;icons left on your test version. Unlock all features and unlimited access on
+        <a class="navigate-to-icanicon" href="https://icanicon.io/" target="_blank">icanicon.io</a>
+      </span>
+  </div>
+  <div style="display:none" id="unlock-segue-wrapper" class="inline-alert">
+      <span>
+        <var id="segue-amount">0</var>&nbsp;icons left on your Segue subscription. Upgrade to Supernova plan on
+        <a class="navigate-to-icanicon" href="https://icanicon.io/" target="_blank">icanicon.io</a>
+      </span>
+  </div>
+  <div style="display:none" id="unlock-supernova-wrapper" class="inline-alert inline-success">
+      <span>
+        <b>Welcome back!&nbsp;&#128075;</b><br/>
+        Enjoy unlimited access with your Supernova subscription.
+      </span>
+  </div>
+</section>
+
+<!-- Export box -->
+<section class="add-border">
+  <span>Export Format</span>
+  <div class="options-wrapper" id="free-export-options">
+  </div>
+  <div class="options-wrapper" id="export-options">
+  </div>
+  <button type="submit" class="primary-button" id="export-button">Export Icons</button>
+</section>
+
+<!-- Login box -->
+<section class="container" id="login-section">
+  <span>Login to icanicon.io</span>
+  <div class="input-wrapper">
+    <input type="text" placeholder="Username" id="username" name="name" required>
+    <input type="password" placeholder="Password" id="password" name="pass" required>
+    <button onclick="togglePasswordVisibility()" class="password-visibility-toggle">
+      <img id="show-password" src="https://sugarcode-assets.s3.eu-central-1.amazonaws.com/icanicon/show-password.svg" alt="show" />
+      <img id="hide-password" style="display:none" src="https://sugarcode-assets.s3.eu-central-1.amazonaws.com/icanicon/hide-password.svg" alt="hide" />
+    </button>
+  </div>
+  <button type="submit" class="secondary-button" id="login-button" style="margin-bottom: 0">Login</button>
+  <a id="forgot-password" href="https://icanicon.io/forgot-password/" target="_blank">Forgot password?</a>
+</section>
+
+<!-- Team selection box -->
+<section class="container no-padding-bottom" id="team-selection-section" style="display:none">
+  <span>Select Team</span>
+  <select onchange="selectTeam()" id="team-selection" class="select-css"></select>
+</section>
+
+<!-- Create / Update box -->
+<section class="container no-padding-bottom" id="create-or-update-board-section" style="display:none">
+  <span>Board Action</span>
+  <button class="secondary-button" id="create-board-button">Create a new board</button>
+  <button class="secondary-button" id="update-board-button">Update an existing board</button>
+</section>
+
+<!-- Board selection box -->
+<section class="container no-padding-bottom" id="board-selection-section" style="display:none">
+  <span>Select Board</span>
+  <select onchange="selectBoard()" id="board-selection"></select>
+  <a class="back-buttons">back</a>
+</section>
+
+<!-- Create / Update box -->
+<section class="container no-padding-bottom" id="board-creation-section" style="display:none">
+  <span>Board Name</span>
+  <input type="text" placeholder="Enter custom board name" id="board-name" name="board-name" required>
+  <a class="back-buttons">back</a>
+</section>
+
+<!-- Push -->
+<section class="container no-padding-bottom" id="push-section" style="display:none">
+  <button class="primary-button" id="sync-button">Push board</button>
+</section>
+
+<!-- Color to Code Promo -->
+<section class="selection">
+  <span style="margin-top: 12px;">More Sketch Plugins from icanicon.io</span>
+  <div class="promo-tile">
+    <img src="https://sugarcode-assets.s3.eu-central-1.amazonaws.com/icanicon/SketchIcon.svg" alt="ii" />
+    <span>Colors to Code</span>
+    <a id="color-plugin" href="https://www.figma.com/community/plugin/834722635660200680" target="_blank">Get the plugin</a>
+  </div>
+</section>
+
+<div class="container center-message">
+  <div class="container success-message" id="success-message">
+    <span class="sync-message" id="sync-message"/>
+  </div>
+</div>
+<script>
+  var segments_to_export;window.setData=function(e){try{const t=e.reduce((e,t)=>e+t.icons.reduce((e,t)=>e+t.length,0),0);document.getElementById("selection-amount").innerHTML=t,segments_to_export=e,iconCount=t,validateExport()}catch(e){window.postMessage("nativeLog",e)}},window.setInit=function(e){try{"dark"===e.theme?document.body.className+=" dark-theme":document.body.className+=" light-theme",createOrUpdateBoardSection.style.display="none",getIcanIconExportOptions(),updateAmount()}catch(e){window.postMessage("nativeLog",e)}},window.finishExport=function(){exportLoading(!1),updateAmount(),showMessage("success",successfulExportToast,toastTimeOut)};const API="https://icanicon.io/api";var createOrUpdateBoardSection=document.getElementById("create-or-update-board-section"),boardSelectionSection=document.getElementById("board-selection-section"),boardCreationSection=document.getElementById("board-creation-section"),teamSelectionSection=document.getElementById("team-selection-section"),loginSection=document.getElementById("login-section"),pushSection=document.getElementById("push-section"),teamSelection=document.getElementById("team-selection"),boardSelection=document.getElementById("board-selection"),exportOptions=document.getElementById("export-options"),freeExportOptions=document.getElementById("free-export-options"),usernameInput=document.getElementById("username"),passwordInput=document.getElementById("password"),showPassword=document.getElementById("show-password"),hidePassword=document.getElementById("hide-password"),boardNameInput=document.getElementById("board-name"),backButtons=document.getElementsByClassName("back-buttons"),exportButton=document.getElementById("export-button"),syncButton=document.getElementById("sync-button"),loginButton=document.getElementById("login-button"),createBoardButton=document.getElementById("create-board-button"),updateBoardButton=document.getElementById("update-board-button"),selectionAmount=document.getElementById("selection-amount"),syncMessage=document.getElementById("sync-message"),successMessage=document.getElementById("success-message"),icanIconLinks=document.getElementsByClassName("navigate-to-icanicon"),boardName="",boards=[],team="",teamObj=null,teams=[],token="",fingerprint=getUniqueFingerprint(),loggedIn=!1,iconCount=0,iconsLeft=-1,syncMode=!1,passwordVisible=!1,toastTimeOut=3500,boardNameRequiredErrorToast="&#129299; Please enter a board name",boardNameTakenErrorToast="&#129299; This board name already exists",freeExportErrorToast="&#128553; Issue with free export",exportErrorToast="&#128553; Could not export icons",nothingSelectedErrorToast="&#129299; Select at least 1 icon",boardUpdatedSuccessToast="&#127881; Board updated!",boardCreatedSuccessToast="&#127881; Board created!",upgradeRequiredErrorToast="&#129299; Please upgrade to Supernova",pushErrorToast="&#128553; Could not push files",credentialsMismatchErrorToast="&#128553; Credentials dont match",readingTeamsErrorToast="&#128553; Error reading teams",readingBoardErrorToast="&#128553; Error reading boards",successfulExportToast="&#127881; Export successful";exportButton.addEventListener("click",()=>{exportLoading(!0),setTimeout(()=>exportIcons(segments_to_export),100)}),loginButton.addEventListener("click",()=>{loginRequest()});for(var i=0;i<icanIconLinks.length;i++)icanIconLinks[i].addEventListener("click",navigateToIcanIcon);function navigateToIcanIcon(){window.postMessage("openUrl","https://icanicon.io")}function navigateForgotPassword(){window.postMessage("openUrl","https://icanicon.io/forgot-password")}function navigateToIconPlugin(){window.postMessage("openUrl","https://github.com/Sugarcode-Team/colors-to-code-sketch-plugin-live")}function togglePasswordVisibility(){passwordVisible?(passwordInput.type="password",showPassword.style.display="block",hidePassword.style.display="none"):(passwordInput.type="text",showPassword.style.display="none",hidePassword.style.display="block"),passwordVisible=!passwordVisible}async function getIcanIconExportOptions(){const e=API+"/export_bar/option/";try{const t=await fetch(e,{});if(200===t.status){let e=await t.json();exportOptions.innerHTML="",freeExportOptions.innerHTML="";let o=0;e.filter(e=>e.public_access).forEach(e=>{const t=document.createElement("label"),n=0===o?"checked":"";t.className="checkbox-wrapper";const a='<aside><img src="https://sugarcode-assets.s3.eu-central-1.amazonaws.com/icanicon/'+e.icon+'" alt="" /></aside>',s="<p>"+e.name+" "+e.file_ending+"</p>",r="<input "+n+' type="radio" value="'+e.file_type+'" name="free_export_option"><span class="checkmark"></span>';t.innerHTML=a+s+r,freeExportOptions.appendChild(t),o+=1})}}catch(e){window.postMessage("nativeLog","Got error: "+e.message)}}async function getAmountLeft(e){const t=API+"/figma/checkRemainingIconCount";let o=new FormData;o.append("fp",e);const n={method:"POST",body:o};try{const e=await fetch(t,n);return(await e.json()).amount}catch(e){return showMessage("error",freeExportErrorToast,toastTimeOut),amount=0}}function selectTeam(){team=teamSelection.selectedOptions[0].value,teamObj=teams.find(e=>e.id===team),getTeamExportOptions(),changeMessage()}function selectBoard(){boardName=boardSelection.selectedOptions[0].text}async function exportIcons(e){const t=API+"/figma/downloadFigmaBoard";let o=[],n="";try{for(let a in e){const s=e[a];for(let r in s.icons){const i=s.icons[r],c=""+a,d=""+(e.length-1),l=""+(s.icons.length-1),p=c===d&&""+r===l,u="0"===c&&""+r=="0",m={first_request:u,last_request:p,zip_file:n,segment_name:s.name,icons:i,logged_in:loggedIn,formats:getFormats(),fingerprint:fingerprint,amount:iconCount,team:team,application_code:60,svg_form:"data"},g={method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(m)};if(token&&(g.headers.Authorization="Bearer "+token),p)window.postMessage("getZip",JSON.stringify({url:t,options:g}));else{const e=await fetch(t,g);if(0,o.push(e.status),u){n=(await e.json()).zip_file}if(200!==e.status){let t=await e.json();return void this.showMessage("error",t,"")}}}}}catch(e){showMessage("error",exportErrorToast,toastTimeOut),exportLoading(!1)}}async function loginRequest(){const e=usernameInput.value,t=passwordInput.value,o=API+"/login/",n=new FormData;n.append("username",e),n.append("password",t);const a={method:"POST",body:n};try{const e=await fetch(o,a),t=await e.text();(token=JSON.parse(t).access)?(loginSection.style.display="none",await getTeams(),teamSelectionSection.style.display="flex",loggedIn=!0,validateExport()):(loginSection.style.display="flex",showMessage("error",credentialsMismatchErrorToast,toastTimeOut))}catch(e){loginSection.style.display="flex"}}function getFormats(){let e=[],t=document.getElementsByClassName("checkbox-wrapper");for(let o=0;o<t.length;o++)!0===t[o].children[2].checked&&e.push(t[o].children[2].value);return e}async function getTeams(){const e=API+"/teams/",t={headers:{Authorization:"Bearer "+token}};try{const o=await fetch(e,t);teams=await o.json(),teamSelection.innerHTML="";for(let e=0;e<teams.length;e++){const t=document.createElement("option");t.text=teams[e].name,t.value=teams[e].id,teamSelection.add(t,null),0===e&&(team=teams[e].id,teamObj=teams[e],getTeamExportOptions(),changeMessage())}}catch(e){showMessage("error",readingTeamsErrorToast,toastTimeOut)}}async function getBoards(){const e=API+"/boards?teamId="+team+"/",t={headers:{Authorization:"Bearer "+token}};try{const o=await fetch(e,t);boards=await o.json(),boardSelection.innerHTML="";let n=!1;for(let e=0;e<boards.length;e++)if(2===boards[e].type){const t=document.createElement("option");t.text=boards[e].name,t.value=boards[e].id,boardSelection.add(t,null),n||(n=!0,boardName=boards[e].name)}}catch(e){showMessage("error",readingBoardErrorToast,toastTimeOut)}}function checkDuplicates(e){for(let t=0;t<boards.length;t++)if(boards[t].name===e)return 1;return 0}function getUniqueFingerprint(){try{return(new ClientJS).getFingerprint()}catch(e){window.postMessage("nativeLog","Error: "+e)}}function updateAmount(){getAmountLeft(fingerprint).then(function(e){iconsLeft=e,document.getElementById("free-amount").innerHTML=e,document.getElementById("segue-amount").innerHTML=e,validateExport()})}function validateExport(){iconCount<=iconsLeft&&0!==iconCount||loggedIn&&0!==iconCount?(exportButton.disabled=!1,exportButton.style.background="#18A0FB"):(exportButton.disabled=!0,exportButton.style.background="#858585")}async function getTeamExportOptions(){const e=["static-custom","static-native","static-web","basic"],t=API+"/export_bar/team/"+team+"/",o={headers:{Authorization:"Bearer "+token}},n=await fetch(t,o);if(200===n.status){let t=await n.json();freeExportOptions.innerHTML="",exportOptions.innerHTML="";let o=0,a=[];t.forEach(t=>{e.includes(t.output_option.output_category)&&("custom"===t.output_option.file_type&&teamObj.custom_template&&teamObj.custom_template.validated?a.push(t):"custom"!==t.output_option.file_type&&a.push(t))}),a.forEach(e=>{const t="custom"===e.output_option.file_type?e.output_option.file_type+"_"+team:e.output_option.file_type,n=document.createElement("label"),a=0===o?"checked":"";n.className="checkbox-wrapper";const s='<aside><img src="https://sugarcode-assets.s3.eu-central-1.amazonaws.com/icanicon/'+e.output_option.icon+'" alt="" /></aside>',r="<p>"+e.output_option.name+" "+e.output_option.file_ending+"</p>",i="<input "+a+' type="radio" value="'+t+'" name="export_option"><span class="checkmark"></span>';n.innerHTML=s+r+i,exportOptions.appendChild(n),o+=1})}}function changeMessage(){const e=document.getElementById("unlock-wrapper"),t=document.getElementById("unlock-segue-wrapper"),o=document.getElementById("unlock-supernova-wrapper");e.style.display="none",checkPlan()?(o.style.display="block",t.style.display="none"):(t.style.display="block",o.style.display="none")}function exportLoading(e){e?(exportButton.disabled=!0,exportButton.style.background="#18A0FB",exportButton.innerHTML="Loading..."):(exportButton.disabled=!1,exportButton.style.background="#858585",exportButton.innerHTML="Export Icons")}function checkPlan(){return["Supernova","Betatester"].includes(getPlan())}function getPlan(){return teams.filter(e=>""+e.id==""+team)[0].subscription.plan.name}function showMessage(e,t,o){successMessage.style.padding="6px 12px 6px 12px",successMessage.style.display="inline-table",successMessage.style.opacity="1",syncMessage.innerHTML=t,setTimeout(()=>{successMessage.style.padding="0px",successMessage.style.display="none",syncMessage.innerHTML=""},o)}document.getElementById("forgot-password").addEventListener("click",navigateForgotPassword),document.getElementById("color-plugin").addEventListener("click",navigateToIconPlugin),syncButton.addEventListener("click",()=>{let e="";if("create"===syncMode){if(""===(e=boardNameInput.value))return void showMessage("error",boardNameRequiredErrorToast,toastTimeOut);if(checkDuplicates(e))return void showMessage("error",boardNameTakenErrorToast,toastTimeOut)}else"update"===syncMode&&(e=boardName);parent.postMessage({pluginMessage:{type:"sync",name:e}},"*")}),createBoardButton.addEventListener("click",()=>{createOrUpdateBoardSection.style.display="none",boardCreationSection.style.display="flex",pushSection.style.display="flex",syncMode="create",backButtons[1].addEventListener("click",()=>{boardCreationSection.style.display="none",createOrUpdateBoardSection.style.display="flex",pushSection.style.display="none",syncMode=!1})}),updateBoardButton.addEventListener("click",()=>{createOrUpdateBoardSection.style.display="none",boardSelectionSection.style.display="flex",pushSection.style.display="flex",syncMode="update",backButtons[0].addEventListener("click",()=>{boardSelectionSection.style.display="none",createOrUpdateBoardSection.style.display="flex",pushSection.style.display="none",syncMode=!1})});
+</script>
+</body>
+</html>

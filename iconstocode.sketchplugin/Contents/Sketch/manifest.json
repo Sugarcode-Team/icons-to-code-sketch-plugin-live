@@ -5,7 +5,7 @@
     {
       "name": "Run Plugin...",
       "identifier": "iconstocode.my-command-identifier",
-      "script": "./export-icons.js",
+      "script": "__export-icons.js",
       "handlers": {
         "run": "onRun",
         "actions": {
